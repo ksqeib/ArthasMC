@@ -9,9 +9,9 @@ import java.util.Map;
 
 public class ConfigLoader {
 
-    private FileConfiguration config;
+    private final FileConfiguration config;
 
-    private Map<String, String> configMap = new HashMap<>();
+    private final Map<String, String> configMap = new HashMap<>();
 
     public ConfigLoader(FileConfiguration config) {
         this.config = config;

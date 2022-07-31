@@ -1,14 +1,10 @@
 package com.serverct.plugin.tool.arthas;
 
-import com.taobao.arthas.core.shell.ShellServerOptions;
-import com.taobao.arthas.core.util.IOUtils;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Map;
 import java.util.logging.Logger;
 
