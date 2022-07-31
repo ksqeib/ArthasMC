@@ -12,7 +12,7 @@ import java.util.jar.JarFile;
 public class AgentLoader {
     private Instrumentation instrumentation;
 
-    public void initInstrumentation() throws Exception {
+    public void initInstrumentation() {
         instrumentation = ByteBuddyAgent.install();
     }
 
