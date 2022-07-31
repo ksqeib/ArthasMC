@@ -1,0 +1,8 @@
+#转成map传入
+serverConfigMap:
+  arthas:
+    ip: "127.0.0.1"
+    telnetPort: 3721
+    httpPort: 1212
+    logging:
+      config: ./plugins/ArthasMC/logback.xml

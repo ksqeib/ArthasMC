@@ -1,0 +1,69 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.4'
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+apply plugin: 'com.github.johnrengelman.shadow'
+
+group 'com.serverct.plugin'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url = "https://repo.codemc.io/repository/nms" }
+    maven { url = "https://nexus.velocitypowered.com/repository/maven-public" }
+}
+
+dependencies {
+    implementation 'net.bytebuddy:byte-buddy-agent:1.12.10'
+    implementation 'com.taobao.arthas:arthas-core:3.6.4'
+    implementation 'com.taobao.arthas:arthas-spy:3.6.4'
+    implementation 'com.taobao.arthas:arthas-common:3.6.4'
+    implementation 'org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT'
+
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+shadowJar {
+    archiveClassifier.set('')
+
+    dependencies {
+//        include(dependency {
+//            it.moduleGroup.contains('com.google')
+//        })
+        include(dependency('com.taobao.arthas:arthas-core'))
+        include(dependency('net.bytebuddy:byte-buddy-agent:'))
+        include(dependency('com.alibaba:bytekit-core'))
+        include(dependency('com.taobao.arthas:arthas-tunnel-client'))
+        include(dependency('com.alibaba:fastjson'))
+        include(dependency('com.taobao.arthas:arthas-spy'))
+        include(dependency('com.taobao.arthas:arthas-common'))
+        include(dependency('com.alibaba.arthas:arthas-repackage-logger'))
+        include(dependency('com.taobao.text:text-ui'))
+        include(dependency('com.alibaba.middleware:cli'))
+//        include(dependency('io.netty:netty-common'))
+//        include(dependency('io.netty:netty-transport'))
+//        include(dependency('org.slf4j:slf4j-api'))
+//        include(dependency('io.netty:netty-buffer'))
+        include(dependency('com.alibaba.middleware:termd-core'))
+//        include(dependency('io.netty:netty-handler'))
+    }
+
+    // But only relocate Guice
+    relocate 'com.google.inject', 'de.davidcrome.gradle.shadow_plugin_example.com.google.inject'
+}

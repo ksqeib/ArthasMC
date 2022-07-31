@@ -1,0 +1,4 @@
+name: ArthasMC
+main: com.serverct.plugin.tool.arthas.Bootloader
+version: 0.0.1
+author: ksqeib
